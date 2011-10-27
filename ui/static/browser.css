@@ -5,3 +5,18 @@ body {
   font-family: Helvetica, sans-serif;
   font-size: 18px;
 }
+form {
+
+}
+input, button {
+  display: inline-block;
+  font-size: 125%;
+  padding: 0.25em;
+}
+input#q {
+  width: 80%;
+}
+button {
+  width: 10%;
+  
+}

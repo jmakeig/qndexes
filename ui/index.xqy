@@ -8,7 +8,13 @@ xdmp:set-response-content-type("text/html;charset=utf-8"),
 	<link type="text/css" rel="stylesheet" href="/static/browser.css"/>
 </head>
 <body>
-  <p>asdf</p>
+  <h1>Qndexes</h1>
+  <h2>“Because there’s no ‘U’ in QName”</h2>
+  
+  <form method="get" id="search">
+    <input name="q" id="q" placeholder="Search"/>
+    <button id="submit">Search</button>
+  </form>
 </body>
 </html>
 )
