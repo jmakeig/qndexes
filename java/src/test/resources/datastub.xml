@@ -1,0 +1,43 @@
+<document><!--ren|rens,nss,es,eas,pcs only present when document is xml-->
+  <ren>Root Element Name</ren>
+  <rens>Root Element Namespace</rens>
+  <dt>binary|text|xml</dt>
+  <ds>Document size in bytes</ds>
+  <dmt>Document MimeType</dmt>
+  <nss>
+    <ns>Namespace declared</ns>
+  </nss>
+  <es count=""><!--Element Statistics-->
+     <e>
+       <ek>Hash32 of key string</ek>
+       <en>Element Name</en>
+       <ens>Element Namespace</ens>
+       <e-f>Element Frequency</e-f>
+     </e>
+  </es>
+  <eas count=""><!--Element Attribute Statistics-->
+     <ea>
+       <eak>Hash32 of key string</eak>
+       <ean>Element Name</ean>
+       <ens>Element Namespace</ens>
+       <an>Attribute Name</an>
+       <ans>Attribute Namespace</ans>
+       <ea-f>Element/Attribute Frequency</ea-f>
+       <avs><!--Element Attribute Values-->	
+          
+       </avs>
+     </ea>
+  </eas>
+  <pcs count=""><!--Parent Child Statistics-->
+    <pce>
+       <pck>Hash32 of parent-child key string</pck>
+        <pen>Parent Element Name</pen>
+        <pens>Parent Element Namespace</pens>
+        <cen>Child Element Name</cen>
+        <cens>Child Element Namespace</cens>
+        <pce-f>Parent Child Element Frequency</pce-f>
+        <pce-mn>Min Distance from parent</pce-mn>
+        <pce-mx>Max Distance from parent</pce-mx>
+    </pce>
+  </pcs>
+</document>
