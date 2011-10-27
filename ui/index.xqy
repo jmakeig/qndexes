@@ -5,7 +5,9 @@ xdmp:set-response-content-type("text/html;charset=utf-8"),
 <head>
 	<meta charset="utf-8" />
 	<title>Qndexes</title>
-	<link type="text/css" rel="stylesheet" href="/static/browser.css"/>
+	<link type="text/css" rel="stylesheet" href="/static/browser.css" />
+	<script type="text/javascript" src="static/jquery.js" />
+	<script type="text/javascript" src="static/app.js" />
 </head>
 <body>
   <h1>Qndexes</h1>
