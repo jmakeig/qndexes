@@ -1,22 +1,42 @@
 html {
   padding: 2em 1em;
+  background: #333;
 }
 body {
   font-family: Helvetica, sans-serif;
   font-size: 18px;
+  color: #fff;
+}
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  margin-bottom: 0.1em;
+}
+h2 {
+  font-size: 0.85em;
+  color: #999;
 }
 form {
-
+  margin: 1em 0;
 }
 input, button {
   display: inline-block;
+  box-sizing: border-box;
+  height: 1.5em;
   font-size: 125%;
-  padding: 0.25em;
+  border-style: none;
+  padding: 0 0.25em;
 }
 input#q {
   width: 80%;
 }
 button {
-  width: 10%;
-  
+  width: 60px;
+  border-style: none;
+  background-image: url("/static/img/magnifier.png"); 
+  background-repeat: no-repeat;
+  background-position: center center;
+  text-indent: -2000000px;
+  border-top-right-radius: 1em;
+  border-bottom-right-radius: 1em;
+  cursor: pointer;
 }
