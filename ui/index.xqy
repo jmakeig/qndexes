@@ -17,6 +17,14 @@ xdmp:set-response-content-type("text/html;charset=utf-8"),
     <input name="q" id="q" placeholder="Search"/>
     <button id="submit">Search</button>
   </form>
+  <div class="panel">
+    <h3>Element-Element</h3>
+    <div id="element_element" class="container">element_element</div>
+  </div>
+  <div class="panel">
+    <h3>Element</h3>
+    <div id="element" class="container">element</div>
+  </div>
 </body>
 </html>
 )
