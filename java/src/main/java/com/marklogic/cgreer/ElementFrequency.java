@@ -49,14 +49,12 @@ public class ElementFrequency {
 
 		
 		private String getKey(Element e) {
-			return e.getNamespace().getURI() + e.getName();
+			return e.getNamespaceURI() + e.getName();
 		}
 
 		public void map(DocumentURI key, MarkLogicNode value, Context context)
 				throws IOException, InterruptedException {
 			if (key != null && value != null && value.get() != null) {
-				int documentSizeValue = 0;
-				String documentTypeKey = "";
 				try {
 					org.jdom.Document doc = new DOMBuilder().build((Document) value.get());
 					//log.info("Processing key "+key.toString());
@@ -82,6 +80,20 @@ public class ElementFrequency {
 						String outputString = baos.toString();
 						//log.info(outputString);
 						context.write(new Text(hadoopKey), new Text(outputString));
+						
+						if (e.getParentElement() != null) {
+							Element pcElement = new Element("element-element");
+							pcElement = pcElement.setAttribute("frequency", "1");
+							pcElement = pcElement.setAttribute("documentUri", key.toString());
+							pcElement = pcElement.setAttribute("ns2", e.getNamespaceURI());
+							pcElement = pcElement.setAttribute("localname2", e.getName());
+							pcElement = pcElement.setAttribute("ns1", e.getParentElement().getNamespaceURI());
+							pcElement = pcElement.setAttribute("localname1", e.getParentElement().getName());
+							pcElement = pcElement.addContent(new org.jdom.Text(getKey(e.getParentElement()) + elementKey));
+						}
+						
+						
+						
 					}
 					
 				}
@@ -112,7 +124,7 @@ public class ElementFrequency {
 				try {
 					e = builder.build(new ByteArrayInputStream(val.toString().getBytes())).getRootElement();
 
-					frequency += Integer.parseInt(e.getAttribute("frequency").toString());
+					frequency += Integer.parseInt(e.getAttributeValue("frequency").toString());
 				} catch (JDOMException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -120,15 +132,27 @@ public class ElementFrequency {
 			}
 
 			DocumentURI documentUri = new DocumentURI(e.getAttributeValue("documentUri"));
-			e.setAttribute("frequency", Integer.toString(frequency));
-			org.jdom.Document d = new org.jdom.Document(e);
+			Element e2 = new Element(e.getName());
+			e2.setAttribute("frequency", Integer.toString(frequency));
+			e2.setAttribute("ns", e.getAttributeValue("ns"));
+			e2.setAttribute("localname",e.getAttributeValue("localname"));
+			
+			org.jdom.Document d = new org.jdom.Document(e2);
+			
+			// this section just for logging
+			XMLOutputter out = new XMLOutputter(Format.getPrettyFormat());
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			out.output(d, baos);
+			String outputString = baos.toString();
+			log.info(outputString);
+			// end logging
 			org.w3c.dom.Document w3cDoc;
 			try {
 				w3cDoc = new DOMOutputter().output(d);
 
 				MarkLogicNode outputElement = new MarkLogicNode(w3cDoc);
 				
-				log.debug("Writing to "+key.toString());
+				log.info("Writing " + outputElement.toString() + " to "+documentUri.toString());
 				context.write(documentUri, outputElement);
 			} catch (JDOMException e1) {
 				// TODO Auto-generated catch block

@@ -25,7 +25,7 @@
         <value><![CDATA[
         xquery version "1.0-ml"; 
         declare namespace an = "http://marklogic.com/content-analyzer";
-        for $n in /an:document return fn:root($n)
+        fn:doc()
             ]]></value>
     </property>
     <property>
