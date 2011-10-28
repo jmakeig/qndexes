@@ -7,6 +7,7 @@ xdmp:set-response-content-type("text/html;charset=utf-8"),
 	<title>Qndexes</title>
 	<link type="text/css" rel="stylesheet" href="/static/browser.css" />
 	<script type="text/javascript" src="static/jquery.js" />
+	<script type="text/javascript" src="static/protovis.min.js" />
 	<script type="text/javascript" src="static/app.js?{xdmp:random()}" />
 </head>
 <body>
