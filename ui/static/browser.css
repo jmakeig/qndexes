@@ -40,3 +40,19 @@ button {
   border-bottom-right-radius: 1em;
   cursor: pointer;
 }
+
+.panel {
+  box-sizing: border-box;
+  float: left;
+  width: 48%;
+  margin-left: 2%;
+}
+.panel:first-of-type {
+  margin-left: 0;
+}
+
+.panel .container {
+  background: #ccc;
+  min-height: 500px;
+  padding: 0.25em;
+}

@@ -4,11 +4,16 @@ $(document).ready(function(evt) {
       console.dir(data);
     });
     getElementFrequencies($("#q").val(), function(data) {
-      console.dir(data);
+      renderElementFrequencies(data, $("#element"));
     });
     evt.preventDefault();
   });
 });
+
+function renderElementFrequencies(data, el) {
+  // Replace me with the call to protovis
+  $(el).html('<pre>' + JSON.stringify(data) + '</pre>');
+}
 
 function getElementFrequencies(query, handler/* function(data) */) {
   var xhr = new XMLHttpRequest();
